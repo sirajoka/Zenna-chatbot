@@ -5,7 +5,7 @@ from vertexai.language_models import ChatModel, InputOutputTextPair
 from trulens_eval import TruBasicApp
 from functools import lru_cache
 import litellm
-
+import os
 
 app = Flask(__name__)
 vertexai.init(project="vertex-truera", location="us-central1")
