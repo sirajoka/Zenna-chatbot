@@ -8,7 +8,8 @@ import litellm
 import os
 
 app = Flask(__name__)
-vertexai.init(project="vertex-truera", location="us-central1")
+os.environ("GOOGLE_APPLICATION_CREDENTIALS") = os.getenv["GOOGLE_APPLICATION_CREDENTIALS"]
+vertexai.init(project="vertexai-hackathon-407014", location="us-central1")
 chat_model = ChatModel.from_pretrained("chat-bison")
 parameters = {
     "max_output_tokens": 1024,
