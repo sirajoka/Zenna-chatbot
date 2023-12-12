@@ -3,13 +3,13 @@ from trulens_eval import Feedback, Tru, LiteLLM
 import vertexai
 from vertexai.language_models import ChatModel, InputOutputTextPair
 from trulens_eval import TruBasicApp
-#from functools import lru_cache
+from functools import lru_cache
 import litellm
 import os
 
 app = Flask(__name__)
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-vertexai.init(project="vertexai-hackathon-407014", location="us-central1")
+vertexai.init(project="vertex-truera", location="us-central1")
 chat_model = ChatModel.from_pretrained("chat-bison")
 parameters = {
     "max_output_tokens": 1024,
@@ -105,7 +105,7 @@ f_sentiment = Feedback(provider.sentiment).on_output()
 # feedbacks = [f_relevance]
 feedbacks = [f_relevance, f_helpful, f_selfharm, f_maliciousness, f_concise, f_sentiment]
 
-#@lru_cache(maxsize=128)
+@lru_cache(maxsize=128)
 def vertex(prompted):
     response = chat.send_message(prompted, **parameters)
     return response.text
