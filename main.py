@@ -3,7 +3,7 @@ from trulens_eval import Feedback, Tru, LiteLLM
 import vertexai
 from vertexai.language_models import ChatModel, InputOutputTextPair
 from trulens_eval import TruBasicApp
-from functools import lru_cache
+#from functools import lru_cache
 import litellm
 import os
 
@@ -105,7 +105,7 @@ f_sentiment = Feedback(provider.sentiment).on_output()
 # feedbacks = [f_relevance]
 feedbacks = [f_relevance, f_helpful, f_selfharm, f_maliciousness, f_concise, f_sentiment]
 
-@lru_cache(maxsize=128)
+#@lru_cache(maxsize=128)
 def vertex(prompted):
     response = chat.send_message(prompted, **parameters)
     return response.text
