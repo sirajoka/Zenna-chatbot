@@ -1,6 +1,5 @@
 flask
 gunicorn
-Werkzeug
 google-cloud-aiplatform
 trulens_eval
 litellm
